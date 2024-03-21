@@ -12,6 +12,12 @@
     />
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="{% static '/css/styles.css'%}" />
+
+    {%block link_block%}
+
+    {%endblock%}
+
+    
     <title>Boy’s T-Shirt - Codevo</title>
   </head>
 
@@ -19,7 +25,7 @@
     <!-- Navigation -->
     <div class="top-nav">
       <div class="container d-flex">
-        <p>Order Online Or Call Us: +91 8952364170</p>
+      <p>Welcome User{{request.User}}  </p>
         <ul class="d-flex">
           <li><a href="#">About Us</a></li>
           <li><a href="#">FAQ</a></li>
@@ -33,7 +39,7 @@
 
         <ul class="nav-list d-flex">
           <li class="nav-item">
-            <a href="/" class="nav-link">Home</a>
+            <a href="{%url 'index'%}" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
             <a href="product.html" class="nav-link">Shop</a>
@@ -47,22 +53,7 @@
           <li class="nav-item">
             <a href="#contact" class="nav-link">Contact</a>
           </li>
-          <li class="icons d-flex">
-            <a href="login.html" class="icon">
-              <i class="bx bx-user"></i>
-            </a>
-            <div class="icon">
-              <i class="bx bx-search"></i>
-            </div>
-            <div class="icon">
-              <i class="bx bx-heart"></i>
-              <span class="d-flex">0</span>
-            </div>
-            <a href="cart.html" class="icon">
-              <i class="bx bx-cart"></i>
-              <span class="d-flex">0</span>
-            </a>
-          </li>
+         
         </ul>
 
         <div class="icons d-flex">
@@ -76,9 +67,10 @@
             <i class="bx bx-heart"></i>
             <span class="d-flex">0</span>
           </div>
-          <a href="cart.html" class="icon">
+          <a href="{%url 'basket-list'%}" class="icon">
             <i class="bx bx-cart"></i>
-            <span class="d-flex">0</span>
+            <span class="d-flex">{{cart_count}}</span> 
+            <!-- {{request.user.cart.cart_item_count}} -->
           </a>
         </div>
 
@@ -119,24 +111,12 @@
     </footer>
     <!-- Custom Script -->
     <script src="{%static '/js/index.js'%}"></script>
-    {% block script_block%}
 
 
-
-    {%endblock%}
-    <script
-      src="https://code.jquery.com/jquery-3.4.0.min.js"
-      integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/zoomsl.min.js"></script>
-    <script>
-      $(function () {
-        console.log("hello");
-        $("#zoom").imagezoomsl({
-          zoomrange: [4, 4],
-        });
-      });
-    </script>
   </body>
+
+  {%block script_block%}
+ 
+  {%endblock%}
+  
 </html>
