@@ -52,7 +52,7 @@ class Basket(models.Model):
     @property 
     def cart_item_count(self):
         return self.cart_item.count()
-
+    @property
     def cart_total(self):
         basket_item=self.cart_item
         if basket_item:
@@ -86,6 +86,9 @@ class Order(models.Model):
     is_paid=models.BooleanField(default=True)
     total=models.PositiveIntegerField()
 
+    @property
+    def get_order_items(self):
+        return self.purchase_items.all()
 
 class OrderItems(models.Model):
     order_object=models.ForeignKey(Order,on_delete=models.CASCADE,related_name="purchase_items")

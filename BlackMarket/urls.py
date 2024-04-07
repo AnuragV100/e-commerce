@@ -20,7 +20,6 @@ from store import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registration/',views.SignUpView.as_view(),name="signup"),
@@ -33,6 +32,6 @@ urlpatterns = [
     path('basket/item/<int:pk>/remove/',views.BasketItemRemoveView.as_view(),name="basket-item-remove"),
     path('basket/items/<int:pk>/qty/change/',views.CartItemUpdateQuantityView.as_view(),name="editcart-qty"),
     path('checkout/',views.CheckOutView.as_view(),name="checkout"),
-    
-    
+    path('signout/',views.SignOutView.as_view(),name="signout"),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

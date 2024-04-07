@@ -166,7 +166,7 @@
                   class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="email"
                   placeholder="Enter your Email Address"
-                  id="firstName" name="email"
+                  id="firstName" name="email" required
                   value="{{request.user.email}}"
                 />
               </div>
@@ -181,7 +181,7 @@
                   class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
                   placeholder="Enter your Phone number"
-                  id="lastName" name="phone"
+                  id="lastName" name="phone" required
                 />
               </div>
               <div class="col-span-2 grid">
@@ -196,7 +196,7 @@
                     class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="address"
                     placeholder="Enter your delivery address"
-                    id="email" name="address"
+                    id="email" name="address" required
                   />
                 </div>
               </div>
