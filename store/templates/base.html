@@ -46,7 +46,7 @@
             <a href="product.html" class="nav-link">Shop</a>
           </li>
           <li class="nav-item">
-            <a href="#terms" class="nav-link">Terms</a>
+            <a href="{% url 'order-summary'%}" class="nav-link">Terms</a>
           </li>
           <li class="nav-item">
             <a href="#about" class="nav-link">About</a>
@@ -70,7 +70,7 @@
           <a href="{%url 'basket-list'%}" class="icon">
             <i class="bx bx-cart"></i>
             <span class="d-flex">{{cart_count}}</span> 
-            <!-- {{request.user.cart.cart_item_count}} -->
+            {{request.user.cart.cart_item_count}}
           </a>
         </div>
 

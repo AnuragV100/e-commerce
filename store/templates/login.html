@@ -227,19 +227,20 @@ body{
 </style>
 
 <body>
-{% if form.errors%}
-{{form.errors}}
-{%endif%}
+    {%if form.errors%}
+    {{form.errors}}
+    {%endif%}
 
+    {%if messages%}
+        {%for m in messages %}
+            {{m}}
+        {%endfor%}
+    {%endif%}
 
-{%if messages%}
-    {% for m in messages%}
-    {{m}}
-    {%endfor%}
-{%endif%}
+    
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form method="post" action="{% url 'signup'  %}">
+            <form method="post" action="{%url 'signup'%}">
                 {%csrf_token%}
                 <h1>Create Account</h1>
                 <div class="social-icons">
@@ -248,17 +249,17 @@ body{
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your Username for registration</span>
+                <span>Enter the Details</span>
                 <input type="text" placeholder="Name" name="username">
                 <input type="email" placeholder="Email" name="email">
-                <input type="password" placeholder="Password1" name="password1">
-                <input type="password" placeholder="Password2" name="password2">
+                <input type="password" placeholder="Password" name="password1">
+                <input type="password" placeholder="confirm your Password" name="password2">
 
                 <button type="submit">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form method="post" action="{% url 'signin' %}">
+            <form method="post" action="{%url 'signin'%}">
                 {%csrf_token%}
                 <h1>Sign In</h1>
                 <div class="social-icons">
@@ -267,8 +268,8 @@ body{
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your email password</span>
-                <input type="text" placeholder="Username" name="username">
+                <span>use your Name and password</span>
+                <input type="text" placeholder="User name" name="username">
                 <input type="password" placeholder="Password" name="password">
                 <a href="#">Forget Your Password?</a>
                 <button type="submit">Sign In</button>

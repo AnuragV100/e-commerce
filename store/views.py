@@ -18,7 +18,7 @@ from store.decorators import signin_required,owner_permission_required
 class SignUpView(View):
 
     def get(self,request,*args,**kwargs):
-        form=RegistrationForm
+        form=RegistrationForm()
         return render(request,"login.html",{"form":form})
     
     def post(self,request,*args,**kwargs):
@@ -35,7 +35,7 @@ class SignUpView(View):
 class SignInView(View):
 
     def get(self,request,*args,**kwargs):
-        form=LoginForm
+        form=LoginForm()
         return render(request,"login.html",{"form":form})
     
     def post(self,request,*args,**kwargs):
@@ -121,7 +121,7 @@ class BasketItemView(View):
 @method_decorator([signin_required,owner_permission_required,never_cache],name="dispatch")    
 class BasketItemRemoveView(View):
 
-    def get(self,request,*args,**kwargs):
+    def get(self,request,*args,**kwargs): 
         id=kwargs.get("pk")
         basket_item_object=BasketItem.objects.get(id=id)
         basket_item_object.delete()
@@ -185,7 +185,7 @@ class CheckOutView(View):
             order_obj.delete()
 
         finally:
-            return redirect ("index")
+            return redirect ("order-summary")
     
 
 
@@ -198,9 +198,20 @@ class SignOutView(View):
         return redirect("signin")
 
 
-# 
+#vSummary view 
 class OrderSummaryView(View):
 
     def get(self,request,*args,**kwargs):
         qs=Order.objects.filter(user_object=request.user)
         return render(request,"order_summary.html",{"data":qs})
+    
+
+# order remove view
+
+
+class OrderItemRemoveView(View):
+
+    def get(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        qs=OrderItems.objects.get(id=id).delete()
+        return redirect("order-summary")
